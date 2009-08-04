@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br">
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+  <title><TMPL_VAR NAME=TITLE></title>
+
+  
+  <style type="text/css">
+
+   body {
+
+	margin:0 auto;
+
+	padding:0;
+
+	font:78% Trebuchet MS, Arial, Helvetica, sans-serif;
+
+	background-color:#FFFFFF;
+
+	color:#000;
+
+	}
+
+
+
+	a {
+
+	text-decoration:none;
+
+	color:#474747;
+
+	}
+
+
+
+	a:hover {
+
+	text-decoration:underline;
+
+	color:#474747);
+
+	}
+
+
+
+	a img {
+
+	border:0;
+
+	}
+
+	
+
+	#content {
+
+	background-color:#ffffff;
+
+	color:#000;
+
+	margin:0 auto;
+
+	padding:1px 5px;
+
+	width:750px;
+
+	}
+
+
+
+	#header {
+
+	color:#ffffff;
+
+	background:#ffffff url(http://www.oz.railsplayground.com/imagens/head.jpg) bottom left no-repeat;
+
+	height:150px;
+
+	margin:0 0 10px 0;
+
+	padding:0px;
+
+	}
+
+
+
+
+
+	#header h1 {
+
+	font-size:2em;
+
+	float:left;
+
+	font-weight:normal;
+
+	letter-spacing:-2px;
+
+	margin-left:10px;
+
+	}
+
+
+
+	#header a{
+
+	color: #ffffff;
+
+	}
+
+	#header a:hover{
+
+	color: rgb(182,224,150);
+
+		}
+
+	#page h2{
+
+	font-size:1.35em;
+
+	font-weight:normal;
+
+	}
+
+
+
+	#header h1 a,#header h1 a:hover {
+
+	padding:0;
+
+	}
+
+	#header em{
+
+	font-size:0.6em;
+
+	font-style:normal;
+
+	letter-spacing:2px;	
+
+	}
+
+	#left	
+
+	{
+
+	margin:5px;
+
+	font-size:1.1em;
+
+	float:left;
+
+	}
+
+
+
+
+
+	#page {
+
+	margin:10px 0 10px 200px;
+
+	padding:0;
+
+	line-height:1.5em;
+
+	text-align:left;	
+	
+
+	}
+
+	#code {
+	  border:1px solid #c1c1c1;
+	   background:#EEEEEE;
+	   padding:4px;
+	 }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div id="content">
+
+	 <br />    
+    <div id="header">
+
+      <h1><a href="index.html"><TMPL_VAR NAME=BLOGTITLE></a><br/></h1>
+
+    </div>
+
+
+    <div id="left">
+
+    	<b>Textos</b><br />
+    	<TMPL_LOOP NAME="linksartigos">
+	    <TMPL_VAR NAME="name">
+	</TMPL_LOOP>
+      <br />
+      <br />
+      <b>Links</b>
+      <br />
+
+    </div>
+
+    <div id="page">
+
+    <TMPL_IF NAME="artigosprint">   
+ 		<TMPL_LOOP NAME="artigosprint">
+    	  <TMPL_VAR NAME="nameart">
+ 		</TMPL_LOOP> 
+	 <TMPL_ELSE>
+		<TMPL_LOOP NAME="welcome">
+    		<TMPL_VAR NAME="apres">
+ 		</TMPL_LOOP> 
+	 </TMPL_IF>
+    </div>
+
+
+
+  </div>
+
+</body>
+
+</html>
+

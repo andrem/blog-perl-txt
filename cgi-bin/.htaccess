@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^([A-Z].+) index.html?$1.txt

@@ -1,0 +1,23 @@
+Este é um blog simples em perl que utiliza o HTML::Template para renderizar o
+conteúdo em .txt como um blog.
+
+Não tem todos os recursos de um blog, porém faz o essêncial.
+
+Basta criar um arquivo .txt com o nome do Post e data, separado por "_" e o
+mesmo é impresso no corpo do blog.
+
+A ideia é, criar o arquivo .txt, o blog lista os arquivos pela data, e cria os
+links dos posts. O link é formatado para ser intepretado pelo .htaccess que
+retira as informações de data, etc, que ficaram no arquivo.
+
+O conteúdo é renderizado.
+
+
+Mais informações:
+
+http://andrem.wordpress.com
+andreoandre [at] gmail [dot] com
+
+Eu usei ele como meu primeiro blog, no endereço:
+
+http://www.oz.railsplayground.com

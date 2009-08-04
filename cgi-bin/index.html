@@ -1,0 +1,81 @@
+#!/usr/bin/perl
+
+use CGI::Carp qw(fatalsToBrowser);
+use HTML::Template;
+use File::Listing;
+my $post;
+my $postlink;
+my @links;
+my @artigos;
+my $template = HTML::Template->new(filename => 'blog_template.tmpl');
+my $title = "Nome do Blog";
+my $blogtitle = "Alias para o Blog";
+$template->param(TITLE, $title);
+$template->param(BLOGTITLE, $blogtitle);
+
+#############################################################################
+# Gerando Links de posts anteriores
+#############################################################################
+for (parse_dir(`ls -l`)) {
+     ($name, $type, $size, $mtime, $mode) = @$_;
+     if ($name =~ /txt/) {
+        $post = $name;
+         $post =~ s/.txt//;
+	$name =~ s/_/&nbsp;/g;
+        $name =~ s/[0-9]|.txt//g;
+        $postlink = "<a href=\"$post\">" . $name . "</a><br />";
+        
+       my  %link = ( 
+               name => $postlink
+            );
+      
+     push(@links, \%link);
+     }
+     next if $type ne 'f'; 
+     
+ }
+$template->param(linksartigos => \@links);
+
+#############################################################################
+# Artigos
+#############################################################################
+if($ENV{'REQUEST_METHOD'} eq 'GET') {
+  my $D = $ENV{'QUERY_STRING'};
+  open(my $artigo,"<$D");
+   while (<$artigo>) {
+     #$_ =~ s/ /&nbsp;/g;
+     $_ =~ s/\n/<br \/>/g;
+     $_ =~ s/<<</<b>/g;
+     $_ =~ s/>>>/<\/b>/g;
+       my %texto = ( 
+               nameart => $_
+              );
+      
+    push(@artigos, \%texto);
+  }
+  $template->param(artigosprint => \@artigos);
+  close($artigo); 
+} else {
+   read(STDIN, $D, $ENV{'CONTENT_LENGTH'});
+}
+
+#############################################################################
+# Pagina de apresentacao
+#############################################################################
+open(my $apresenta,".Welcome_09122006.txt");
+   while (<$apresenta>) {
+     #$_ =~ s/ /&nbsp;/g;
+     $_ =~ s/\n/<br \/>/g;
+     $_ =~ s/<<</<b>/g;
+     $_ =~ s/>>>/<\/b>/g;
+       my %apresent = ( 
+               apres => $_
+              );
+      
+    push(@aprese, \%apresent);
+  }
+  $template->param(welcome => \@aprese);
+  close($apresenta); 
+
+print "Content-Type: text/html\n\n", $template->output;
+ 
